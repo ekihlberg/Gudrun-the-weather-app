@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>GUDRUN</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+      <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+	<link rel="shortcut icon" href="favicon.ico" type="icon/favicon"/>
+	<link rel="apple-touch-icon" sizes="57x57" href="icon/apple-icon-57x57.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="icon/apple-icon-60x60.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="icon/apple-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="icon/apple-icon-76x76.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="icon/apple-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="icon/apple-icon-120x120.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="icon/apple-icon-144x144.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="icon/apple-icon-152x152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="icon/apple-icon-180x180.png">
+	<link rel="icon" type="image/png" sizes="192x192"  href="icon/android-icon-192x192.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="icon/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="icon/favicon-96x96.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="icon/favicon-16x16.png">
+	<link rel="manifest" href="icon/manifest.json">
+	<meta name="msapplication-TileColor" content="#ffffff">
+	<meta name="msapplication-TileImage" content="icon/ms-icon-144x144.png">
+	<meta name="theme-color" content="#ffffff">
+
+
+</head>
+<body>
+	<main>
+	<audio id="Audio" autoplay loop>
+	  <source src="music/backgroundmusic.ogg" type="audio/ogg">
+	  <source src="music/backgroundmusic.mp3" type="audio/mpeg">
+	</audio>
+		<section id="start_page">
+			<h1>GUDRUN - The Weather App</h1>
+			<img id="logo" src="img/gudrun_logo.png" alt="Logotype" alt="Audio on/off">
+
+		</section>
+		<section id="outfit_page">
+			<img id="audio_button" src="img/mute.png" onclick="checkSound()">
+
+			<img id="outfit" src="img/outfit.jpg" alt="Outfit of the day">
+				<div id="icons">
+					<img src="img/info_blue.png" alt="More info">
+					<img src="img/email_icon_blue.png" alt="Newsletter">
+					<img src="img/pin_blue.png" alt="Map">	
+				</div>
+				<div id="info_sqr">
+					<h2 id="temp"> -11&deg;</h2>
+					<p>Outfit <br/> for Today</p>
+					<ul id="wheather">
+						<li><img src="img/solmoln.png" alt="Sun"></li>
+						<li><img src="img/regn.png" alt="rain"></li>
+						<li><img src="img/vind.png" alt="Wind"></li>
+					</ul>
+				</div>
+			<div>
+				
+			</div>
+		</section>
+	</main>
+	<script src="script/script.js" charset="utf-8"></script>
+</body>
+
+</html>

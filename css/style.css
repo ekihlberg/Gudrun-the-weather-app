@@ -1,0 +1,123 @@
+@font-face {
+  font-family: 'MyriadPro-Regular';
+  src: url('font/MyriadPro-Regular.eot'); /* IE9 Compat Modes */
+  src: url('font/MyriadPro-Regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('font/MyriadPro-Regular.woff2') format('woff2'), /* Super Modern Browsers */
+       url('font/MyriadPro-Regular.woff') format('woff'), /* Pretty Modern Browsers */
+       url('font/MyriadPro-Regular.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('font/MyriadPro-Regular.svg#svgFontName') format('svg'); /* Legacy iOS */
+}
+
+*{
+	font-family: 'MyriadPro-Regular', sans-serif;
+	font-weight: 400;
+	margin: 0;
+	padding: 0;
+	
+}
+#start_page{
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom:0;
+	width:100%;
+	background: #fff;
+	z-index: 999;
+	display:none;
+
+
+}
+h1{
+	display: none;
+}
+#start_page img{
+	width: 30vh;
+	margin: 15vh auto;
+	display: block;
+
+}
+#outfit{
+	height: 100vh;
+	margin: 20px auto;
+	display: block;
+	box-sizing: border-box;
+}
+
+#temp{
+  color: #eeca06;
+  position: absolute;
+    font-size: 81pt;
+    right: -22px;
+    top: -59px;
+
+
+}
+#info_sqr{
+	background-color: #fff;
+	box-shadow:50px 50px 50px 60px rgba(0,0,0,0.1);
+	position: absolute;
+	bottom: 20px;
+	left: 3.5%;
+    width: 94%;
+}
+
+
+#info_sqr p{
+	text-transform: uppercase;
+    padding: 30px 15px 8px;
+    font-size: 20;
+    letter-spacing: 4px;
+    color: #000066;
+}
+ul{
+	overflow: hidden;
+	
+	float: left;
+	margin: 0 auto;
+}
+ul li {
+	list-style: none;
+	float: left;
+}
+ul li img{
+	width: 65px;
+    padding: 15px;
+}
+#icons {
+	position: absolute;
+	top: 4vh;
+	right: 5vh;
+}
+
+#audio_button {
+	width: 40px;
+	box-shadow: 0px 0px 30px 5px rgba(0,0,0,0.09);
+	border-radius: 100%;
+	position: absolute;
+	top: 4vh;
+	left: 5vh;
+}
+#icons img{
+	width: 40px;
+	float: left;
+	clear: left;
+	box-shadow: 0px 0px 30px 5px rgba(0,0,0,0.09);
+	border-radius: 100%;
+	margin-bottom: 10px;
+}
+@media only screen 
+and (min-device-width : 375px) {
+
+	#info_sqr p{
+	padding: 30px 20px 8px;
+	}
+
+	ul li img{
+	width: 75px;
+    padding: 20px;
+   }
+}
+
+
+}
+
