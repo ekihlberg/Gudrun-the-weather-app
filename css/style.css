@@ -9,11 +9,11 @@
 }
 
 *{
-	font-family: 'MyriadPro-Regular', sans-serif;
+	font-family: sans-serif;
 	font-weight: 400;
 	margin: 0;
 	padding: 0;
-	
+
 }
 #start_page{
 	position: fixed;
@@ -71,7 +71,7 @@ h1{
 }
 ul{
 	overflow: hidden;
-	
+
 	float: left;
 	margin: 0 auto;
 }
@@ -105,7 +105,7 @@ ul li img{
 	border-radius: 100%;
 	margin-bottom: 10px;
 }
-@media only screen 
+@media only screen
 and (min-device-width : 375px) {
 
 	#info_sqr p{
@@ -120,4 +120,3 @@ and (min-device-width : 375px) {
 
 
 }
-
