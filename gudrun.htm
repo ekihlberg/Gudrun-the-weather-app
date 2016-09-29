@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <title>GUDRUN</title>
+	<title>GUDRUN</title>
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -28,37 +28,50 @@
 	<meta name="msapplication-TileImage" content="icon/ms-icon-144x144.png">
 	<meta name="theme-color" content="#ffffff">
 
+
 </head>
 <body>
+	<main>
+	<audio id="Audio" autoplay loop>
+	  <source src="music/backgroundmusic.ogg" type="audio/ogg">
+	  <source src="music/backgroundmusic.mp3" type="audio/mpeg">
+	</audio>
+		<section id="start_page">
+			<h1>GUDRUN - The Weather App</h1>
+			<img id="logo" src="img/gudrun_logo.png" alt="Logotype" alt="Audio on/off">
 
-<div id="start_button"><a href="#">Start</a></div>
+		</section>
+		<section id="outfit_page">
+			<img id="audio_button" src="img/mute.png" onclick="checkSound()">
 
-<script>
-var pos = {};
-var start = document.getElementById('start_button');
-start.addEventListener('click', function(){
-    navigator.geolocation.getCurrentPosition(positive, negative);
-	function positive(navigator){
-		pos = {
-			lat: navigator.coords.latitude,
-			lng: navigator.coords.longitude
-		}
-		var skicka = JSON.stringify(pos);
-		localStorage.posistion = skicka;
+			<img id="outfit" src="img/outfit.jpg" alt="Outfit of the day">
+				<div id="icons">
+					<img src="img/info_blue.png" alt="More info">
+					<img src="img/email_icon_blue.png" alt="Newsletter">
+					<img src="img/pin_blue.png" id="mapbutton" alt="Map">
+				</div>
+				<div id="info_sqr">
+					<h2 id="temp"> -11&deg;</h2>
+					<p>Outfit <br/> for Today</p>
+					<ul id="wheather">
+						<li><img src="img/solmoln.png" alt="Sun"></li>
+						<li><img src="img/regn.png" alt="rain"></li>
+						<li><img src="img/vind.png" alt="Wind"></li>
+					</ul>
+				</div>
+			<div>
 
-  }
-  function negative(error) {
-    console.log('fel');
-    alert('Din position gick inte att läsas av, vi kommer att utgå från Jönköping istället');
-    pos = {
-			lat: 14.1618,
-			lng: 57.7826
-		}
-		var skicka = JSON.stringify(pos);
-		localStorage.posistion = skicka;
-  }
-
-});
-</script>
+			</div>
+		</section>
+			<section id="map_page">
+				<div id="map"></div>
+				<div value="Results" onClick="document.location.reload(true)" id="backicon"><img src="img/back_gul.png" alt="Back">
+				</div>
+	    	</section>
+	    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD6mNAcvdKxRwIs9diiiucJqYnjM1cwfK0&callback=initMap"
+	    async defer></script>
+	</main>
+	<script src="script/script.js" charset="utf-8"></script>
 </body>
+
 </html>

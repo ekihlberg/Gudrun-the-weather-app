@@ -1,26 +1,6 @@
-/*   the following code is adapted from the documentation of Open Weather API  http://openweathermap.org/current */
-// 34e39a1c37183c8db7f68ab6450c1df2
-var latitude = 57.712584;
-var longitude = 11.986084;
-
-function ParseWeatherAPI(){
-	var weatherData = 'http://api.openweathermap.org/data/2.5/weather?lat='+latitude+'&lon='+longitude+'&appid=34e39a1c37183c8db7f68ab6450c1df2&callback=parseWeather&units=metric';
-	JSONPRequest(weatherData);
-};
+// globala variabler
 
 
-
-//tar emot datan från API
-function parseWeather(data){
-		console.log(data);
-		var Temperature = Math.round(data.main.temp);
-		console.log("The Current Temperature:"+Temperature);
-		document.getElementById('temp').innerHTML = Temperature+"&deg;";
-		// var Rain = data.rain.3h;
-		// console.log("The Current Rain Amount:"+Rain);
-
-
-	};
 
 /* The following 5 lines of code was adapted from the lecture material of lecture 7 in Gustav Mäkinen's course Client Programming with Javascript - TKJK15  */
 function JSONPRequest(url) {
@@ -52,3 +32,329 @@ document.addEventListener('DOMContentLoaded',function(){
 		ParseWeatherAPI();
 	}
 	);
+
+	// KARTAN -------------------
+
+/* The following 4 lines code was adapted on a post at: https://developers.google.com/maps/documentation/javascript/tutorial Accessed: 2016-09-20 */
+function initMap() {
+        var map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: 59.334415, lng: 18.110103},
+          disableDefaultUI: true,
+          zoom: 13,
+          /* The following 82 lines code was adapted on a post at: https://developers.google.com/maps/documentation/javascript/styling Accessed: 2016-09-20 */
+          styles: [
+            {elementType: 'geometry', stylers: [{color: '#000066'}]},
+            {elementType: 'labels.text.stroke', stylers: [{color: '#000'}]},
+            {elementType: 'labels.text.fill', stylers: [{color: '#eeca06'}]},
+            {
+              featureType: 'administrative.locality',
+              elementType: 'labels.text.fill',
+              stylers: [{color: '#eeca06'}]
+            },
+            {
+              featureType: 'administrative.locality',
+              elementType: 'labels.text.stroke',
+              stylers: [{color: '#000066'}]
+            },
+            {
+              featureType: 'poi',
+              elementType: 'labels.text.fill',
+              stylers: [{color: '#eeca06'}]
+            },
+            {
+              featureType: 'poi.park',
+              elementType: 'labels.text.fill',
+              stylers: [{color: '#eeca06'}]
+            },
+            {
+              featureType: 'road',
+              elementType: 'geometry',
+              stylers: [{color: '#000000'}]
+            },
+            {
+              featureType: 'road',
+              elementType: 'geometry.stroke',
+              stylers: [{color: '#000000'}]
+            },
+            {
+              featureType: 'road',
+              elementType: 'labels.text.fill',
+              stylers: [{color: '#bdbaba'}]
+            },
+            {
+              featureType: 'road.highway',
+              elementType: 'geometry',
+              stylers: [{color: '#000000'}]
+            },
+            {
+              featureType: 'road.highway',
+              elementType: 'geometry.stroke',
+              stylers: [{color: '#fff'}]
+            },
+            {
+              featureType: 'road.highway',
+              elementType: 'labels.text.fill',
+              stylers: [{color: '#f3d19c'}]
+            },
+            {
+              featureType: 'transit',
+              elementType: 'geometry',
+              stylers: [{color: '#000000'}]
+            },
+            {
+              featureType: 'transit.station',
+              elementType: 'labels.text.fill',
+              stylers: [{color: '#eeca06'}]
+
+            },
+            {
+              featureType: 'water',
+              elementType: 'geometry',
+              stylers: [{color: '#ffffff'}]
+            },
+            {
+              featureType: 'water',
+              elementType: 'labels.text.fill',
+              stylers: [{color: '#515c6d'}]
+            },
+            {
+              featureType: 'water',
+              elementType: 'labels.text.stroke',
+              stylers: [{color: '#17263c'}]
+            }
+          ]
+          });
+
+      var image = 'img/mappin.png';
+/* The following 30 lines code was adapted on a post at: https://developers.google.com/maps/documentation/javascript/examples/map-geolocation Accessed: 2016-09-27 */
+      var marker = new google.maps.Marker({
+        map: map,
+        draggable: true,
+        icon: image
+      });
+
+        // Try HTML5 geolocation.
+    // if (navigator.geolocation) {
+    //       navigator.geolocation.getCurrentPosition(function(position) {
+    //         pos = {
+    //           lat: position.coords.latitude,
+    //           lng: position.coords.longitude
+    //         };
+		//
+    //         marker.setPosition(pos);
+		//
+    //         map.setCenter(pos);
+    //       }, function() {
+    //         handleLocationError(true, marker, map.getCenter());
+    //       });
+    //     } else {
+    //       // Browser doesn't support Geolocation
+    //       handleLocationError(false, marker, map.getCenter());
+    //     }
+	};
+
+      // function handleLocationError(browserHasGeolocation, marker, pos) {
+      //   marker.setPosition(pos);
+      //   marker.setContent(browserHasGeolocation ?
+      //                         'Error: The Geolocation service failed.' :
+      //                         'Error: Your browser doesn\'t support geolocation.');
+			// 											};
+
+document.getElementById('mapbutton').addEventListener('click',function(){
+
+      document.getElementById("outfit_page").style.display = "none";
+      document.getElementById("backicon").style.display = "block";
+
+});
+
+// KARTAN -------------------
+
+/*   the following code is adapted from the documentation of Open Weather API  http://openweathermap.org/current */
+// 34e39a1c37183c8db7f68ab6450c1df2   Weather key
+var latitude = 25.433333;
+var longitude = 57.7826;
+var rain;
+function ParseWeatherAPI(){
+	var weatherData = 'http://api.openweathermap.org/data/2.5/weather?lat='+latitude+'&lon='+longitude+'&appid=34e39a1c37183c8db7f68ab6450c1df2&callback=parseWeather&units=metric';
+		// var weatherData = https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22nome%2C%20ak%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys
+	JSONPRequest(weatherData);
+};
+
+//tar emot datan från API
+function parseWeather(data){
+		console.log(data);
+		var temperature = Math.round(data.main.temp);
+		console.log("The Current Temperature:"+temperature);
+		document.getElementById('temp').innerHTML = temperature+"&deg;";
+		var wind = data.wind.speed;
+		console.log("The Current wind speed is:"+wind);
+		var raindata = data.rain;
+		if (rainstring == undefined){
+			console.log('HEJ');
+			 rain = 0;
+			 console.log(rain);
+		}
+		else {
+			console.log(raindata);
+			var rainstring = JSON.stringify(rain);
+			console.log(rainstring);
+			var hej = rainstring.slice(6, -1);
+			console.log(rain);
+		};
+		var clouds = data.clouds.all
+		console.log(clouds);
+
+				//summer
+			if (temperature >= 25 && rain < 1) {
+
+				document.getElementById('outfit').src="img/s_sun.jpeg";
+			}
+			else if (temperature >= 20 && rain < 1){
+				document.getElementById('outfit').src="img/s_sun_wind.jpeg";
+			}
+			else if (temperature >= 18 && rain > 1){
+				document.getElementById('outfit').src="img/s_sun_rain.jpeg";
+			}
+
+			else if (temperature >= 15 && rain > 1){
+				document.getElementById('outfit').src="img/s_sun_wind_rain.jpeg";
+			}
+
+			 else if (temperature >= 20 && rain < 1){
+				document.getElementById('outfit').src="img/s_sun_cloud.jpeg";
+			}
+
+			else if (temperature >= 20 && rain < 1){
+				document.getElementById('outfit').src="img/s_cloud.jpeg";
+			}
+
+			 else if (temperature >= 20 && rain > 1){
+				document.getElementById('outfit').src="img/s_cloud_wind.jpeg";
+			}
+
+			else if (temperature >= 20 && rain < 1){
+				document.getElementById('outfit').src="img/s_cloud_rain.jpeg";
+			}
+			 else if (temperature >= 13 && rain > 1){
+				document.getElementById('outfit').src="img/s_cloud_wind_rain.jpeg";
+			}
+
+
+
+			//höst
+			else if (temperature >= 10 && rain < 1){
+				document.getElementById('outfit').src="img/h_sun.jpeg";
+			}
+
+			else if (temperature >= 8 && rain < 1){
+				document.getElementById('outfit').src="img/h_sun_wind.jpeg";
+			}
+
+			else if (temperature >= 5 && rain > 1){
+				document.getElementById('outfit').src="img/h_sun_rain.jpeg";
+			}
+
+			else if (temperature >= 5 && rain > 1){
+				document.getElementById('outfit').src="img/h_sun_wind_rain.jpeg";
+			}
+
+			else if (temperature >= 8 && rain < 1){
+				document.getElementById('outfit').src="img/h_sun_cloud.jpeg";
+			}
+
+			else if (temperature >= 5 && rain < 1){
+				document.getElementById('outfit').src="img/h_cloud.jpeg";
+			}
+
+			else if (temperature >= 3 && rain < 1){
+				document.getElementById('outfit').src="img/h_cloud_wind.jpeg";
+			}
+
+			else if (temperature >= 2 && rain > 1){
+				document.getElementById('outfit').src="img/h_cloud_rain.jpeg";
+			}
+
+			else if (temperature >= 0 && rain > 1){
+				document.getElementById('outfit').src="img/h_cloud_wind_rain.jpeg";
+			}
+
+			//winter
+			else if (temperature >= 0 && rain < 1){
+				document.getElementById('outfit').src="img/v_sun.jpeg";
+			}
+
+			else if (temperature >= 0 && rain < 1){
+				document.getElementById('outfit').src="img/v_sun_wind.jpeg";
+			}
+
+			else if (temperature >= -5 && rain > 1){
+				document.getElementById('outfit').src="img/v_sun_rain.jpeg";
+			}
+
+
+			else if (temperature >= -7 && rain > 1){
+				document.getElementById('outfit').src="img/v_sun_wind_rain.jpeg";
+			}
+
+
+			else if (temperature >= -2 && rain < 1){
+				document.getElementById('outfit').src="img/v_sun_cloud.jpeg";
+			}
+
+			else if (temperature >= -5 && rain < 1){
+				document.getElementById('outfit').src="img/v_cloud.jpeg";
+			}
+
+			else if (temperature >= -10 && rain < 1){
+				document.getElementById('outfit').src="img/v_cloud_wind.jpeg";
+			}
+
+			else if (temperature >= -5 && rain > 1){
+				document.getElementById('outfit').src="img/v_cloud_rain.jpeg";
+			}
+
+			else if (temperature >= -15 && rain > 1){
+				document.getElementById('outfit').src="img/v_cloud_wind_rain.jpeg";
+			}
+
+			//spring
+
+			else if (temperature >= 10 && rain < 1){
+				document.getElementById('outfit').src="img/va_sun.jpeg";
+			}
+
+			else if (temperature >= 8 && rain < 1){
+				document.getElementById('outfit').src="img/va_sun_wind.jpeg";
+			}
+
+			else if (temperature >= 7 && rain > 1){
+				document.getElementById('outfit').src="img/va_sun_rain.jpeg";
+			}
+
+			else if (temperature >= 4 && rain > 1){
+				document.getElementById('outfit').src="img/va_sun_wind_rain.jpeg";
+			}
+
+			else if (temperature >= 8 && rain < 1){
+				document.getElementById('outfit').src="img/va_sun_cloud.jpeg";
+			}
+
+			else if(temperature >= 5 && rain < 1){
+				document.getElementById('outfit').src="img/va_cloud.jpeg";
+			}
+
+			else if(temperature >= 3 && rain < 1){
+				document.getElementById('outfit').src="img/va_cloud_wind.jpeg";
+			}
+
+			else if(temperature >= 5 && rain > 1){
+				document.getElementById('outfit').src="img/va_cloud_rain.jpeg";
+			}
+			else{
+				document.getElementById('outfit').src="img/va_cloud_wind_rain.jpeg";
+			};
+
+
+
+
+	};
