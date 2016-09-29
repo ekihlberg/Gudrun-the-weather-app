@@ -31,13 +31,14 @@
 </head>
 <body>
 
-<div id="start_button"><a href="#">Start</a></div>
+<div id="start_button"><!-- <a href="http://web.dnlab.se/~kiem1515/gudrun.htm">-->Start</div>
+  <p id="koord"></p>
 
 <script>
 var pos = {};
 var start = document.getElementById('start_button');
 start.addEventListener('click', function(){
-    navigator.geolocation.getCurrentPosition(positive, negative);
+  navigator.geolocation.getCurrentPosition(positive, negative);
 	function positive(navigator){
 		pos = {
 			lat: navigator.coords.latitude,

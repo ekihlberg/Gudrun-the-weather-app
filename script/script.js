@@ -1,6 +1,9 @@
 // globala variabler
+ var pos = {};
 
-
+ pos = JSON.parse(skicka);
+ console.log(pos.lng);
+ debugger;
 
 /* The following 5 lines of code was adapted from the lecture material of lecture 7 in Gustav Mäkinen's course Client Programming with Javascript - TKJK15  */
 function JSONPRequest(url) {
@@ -38,7 +41,7 @@ document.addEventListener('DOMContentLoaded',function(){
 /* The following 4 lines code was adapted on a post at: https://developers.google.com/maps/documentation/javascript/tutorial Accessed: 2016-09-20 */
 function initMap() {
         var map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: 59.334415, lng: 18.110103},
+          center: {lat: pos. , lng: 18.110103},
           disableDefaultUI: true,
           zoom: 13,
           /* The following 82 lines code was adapted on a post at: https://developers.google.com/maps/documentation/javascript/styling Accessed: 2016-09-20 */
@@ -171,12 +174,11 @@ document.getElementById('mapbutton').addEventListener('click',function(){
 
 /*   the following code is adapted from the documentation of Open Weather API  http://openweathermap.org/current */
 // 34e39a1c37183c8db7f68ab6450c1df2   Weather key
-var latitude = 25.433333;
-var longitude = 57.7826;
+// var latitude = 25.433333;
+// var longitude = 57.7826;
 var rain;
 function ParseWeatherAPI(){
-	var weatherData = 'http://api.openweathermap.org/data/2.5/weather?lat='+latitude+'&lon='+longitude+'&appid=34e39a1c37183c8db7f68ab6450c1df2&callback=parseWeather&units=metric';
-		// var weatherData = https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22nome%2C%20ak%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys
+	var weatherData = 'http://api.openweathermap.org/data/2.5/weather?lat='+pos.lat+'&lon='+pos.lng+'&appid=34e39a1c37183c8db7f68ab6450c1df2&callback=parseWeather&units=metric';
 	JSONPRequest(weatherData);
 };
 
